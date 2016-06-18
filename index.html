@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>mondrian.js</title>
+</head>
+<body>
+<script type="text/javascript">
+
+window.onload =	function() {
+	
+	/*
+	* Body style
+	*/
+
+	document.body.style.margin = 0;
+	document.body.style.padding = 0;
+	document.body.style.width = '100%';
+	document.body.style.height = '100%';
+	document.body.style.overflow = 'hidden';
+
+	/*
+	* Color Options
+	*/
+
+	var c = ['white', 'red', 'blue', 'yellow', 'black'];
+
+	/*
+	* Create Elements
+	*/
+
+	var col = Math.floor(Math.random() * 4) + 2;
+	for (var i = 0; i < col; i++) {
+		var row = Math.floor(Math.random() * 5) + 2;
+		for (var j = 0; j < row; j++) {
+			div = document.createElement('div');
+			div.setAttribute('class', 'd');
+			div.style.display = 'inline-block';
+			div.style.width   = 100 / row + 'vw';
+			div.style.height  = 100 / col + 'vh';
+			div.style.outline = '0.7vw solid black';
+			if (j / 5 == 0) {div.style.backgroundColor = c[Math.floor(Math.random() * 5)]; }
+			else { div.style.backgroundColor = 'white'; }
+			document.body.appendChild(div);
+		}
+	}
+
+	/*
+	* Add Color Element
+	*/
+
+	var d = document.getElementsByClassName('d');
+	var r = Math.floor(Math.random() * 7) + 1;
+	var a = [];
+	var n = 0;
+
+	for (var k = 0; k < r; k++) {
+
+		do {
+			n = Math.floor(Math.random() * d.length)
+		} while (a.indexOf(n) != -1);
+
+		a.push(n);
+
+		div = document.createElement('div');
+		div.style.width   = '100%';
+		div.style.height  = '50%';
+		div.style.outline = '0.7vw solid black';
+		div.style.backgroundColor = c[Math.floor(Math.random() * 5)];
+		d[n].appendChild(div);
+	}
+}
+
+</script>
+</body>
+</html>
